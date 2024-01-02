@@ -13,23 +13,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Counter",
   methods: {
-    incrementCount() {
-      this.$store.commit("incrementCount");
-    },
-    decrementCount() {
-      this.$store.commit("decrementCount");
-    },
-    incrementAge() {
-      this.$store.commit("incrementAge");
-    },
-    decrementAge() {
-      this.$store.commit("decrementAge");
-    },
+    ...mapMutations([
+      "incrementCount",
+      "decrementCount",
+      "incrementAge",
+      "decrementAge",
+    ]),
   },
   computed: mapState({
     // get value from state
