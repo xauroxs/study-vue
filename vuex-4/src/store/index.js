@@ -4,11 +4,21 @@ const store = createStore({
   state() {
     return {
       count: 0,
+      age: 18,
     };
   },
   mutations: {
-    increment(state) {
+    incrementCount(state) {
       state.count++;
+    },
+    decrementCount(state) {
+      state.count--;
+    },
+    incrementAge(state) {
+      state.age++;
+    },
+    decrementAge(state) {
+      state.age--;
     },
   },
 });
