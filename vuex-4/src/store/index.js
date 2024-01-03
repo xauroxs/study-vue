@@ -1,25 +1,12 @@
 import { createStore } from "vuex";
 
+import countStore from "./count.store";
+import userStore from "./user.store";
+
 const store = createStore({
-  state() {
-    return {
-      count: 0,
-      age: 18,
-    };
-  },
-  mutations: {
-    incrementCount(state) {
-      state.count++;
-    },
-    decrementCount(state) {
-      state.count--;
-    },
-    incrementAge(state) {
-      state.age++;
-    },
-    decrementAge(state) {
-      state.age--;
-    },
+  modules: {
+    count: countStore,
+    user: userStore,
   },
 });
 

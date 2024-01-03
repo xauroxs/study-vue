@@ -1,10 +1,15 @@
 <template>
   <h2>Counter component</h2>
   <p>Count: {{ count }}</p>
+  <p>Name: {{ name }}</p>
   <p>Age: {{ age }}</p>
   <div>
     <button @click="incrementCount">Increase count</button>
     <button @click="decrementCount">Decrease count</button>
+  </div>
+  <div>
+    <input type="text" v-model="newName" />
+    <button @click="() => changeName(newName)">Change name</button>
   </div>
   <div>
     <button @click="incrementAge">Increase age</button>
@@ -17,22 +22,26 @@ import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Counter",
+  data() {
+    return {
+      newName: "",
+    };
+  },
   methods: {
     ...mapMutations([
       "incrementCount",
       "decrementCount",
+      "changeName",
       "incrementAge",
       "decrementAge",
     ]),
   },
   computed: mapState({
     // get value from state
-    count: (state) => state.count,
+    count: (state) => state.count.count,
 
-    // shorthand for `(state) => state.age`
-    // cannot be used if state has an object
-    // (e.g. in `state: { rectangle: { a: 1, b: 2 } }` a and b can be obtained only with arrow function)
-    age: "age",
+    name: (state) => state.user.name,
+    age: (state) => state.user.age,
   }),
 };
 </script>
