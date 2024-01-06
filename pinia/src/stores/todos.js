@@ -10,9 +10,7 @@ export const useTodosStore = defineStore("todos", () => {
   const filterIncompleted = computed(() =>
     todos.value.filter((todo) => !todo.completed)
   );
-  const countCompleted = computed(
-    () => todos.value.filter((todo) => todo.completed).length
-  );
+  const countCompleted = computed(() => filterCompleted.value.length);
 
   async function getTodos() {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos");
